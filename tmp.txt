@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import plantuml; print(plantuml.__version__, flush=True)
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'plantuml'

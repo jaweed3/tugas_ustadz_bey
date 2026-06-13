@@ -1,0 +1,33 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam backgroundColor #FEFEFE
+skinparam actorBorderColor #333333
+skinparam usecaseBorderColor #333333
+skinparam usecaseFontColor #333333
+
+actor "Nasabah" as customer
+actor "Petugas" as officer
+
+rectangle "Sistem ATM" {
+  (Verifikasi PIN) as vPIN
+  (Penarikan Tunai) as withdraw
+  (Informasi Saldo) as balance
+  (Mencetak Struk) as receipt
+  (Memakan Kartu) as swallow
+  (Mengisi Uang Tunai) as refill
+}
+
+customer --> vPIN
+customer --> withdraw
+customer --> balance
+officer --> refill
+
+withdraw .> vPIN : <<include>>
+balance .> vPIN : <<include>>
+
+vPIN ..> swallow : <<extend>>\n3x gagal
+
+withdraw .> receipt : <<extend>>
+balance .> receipt : <<extend>>
+@enduml
